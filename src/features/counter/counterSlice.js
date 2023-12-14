@@ -8,16 +8,19 @@ export const counterSlice = createSlice({
     },
     // reducer / actions to determine how the state should update
     reducers: {
-        increment: (state) => {
-            state.value += 1
+        increment: (state, action) => {
+            state.value += action.payload
         },
-        decrement: (state) => {
-            state.value -= 1
+        decrement: (state, action) => {
+            state.value -= action.payload
+        },
+        reset: (state) => {
+            state.value =0
         }
     }
 })
 
-export const { increment, decrement } = counterSlice.actions;
+export const { increment, decrement, reset } = counterSlice.actions;
 
 export const selectCount = (state) => state.counter.value
 
